@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module DataMemory(
 		input wire			clk,
-		input wire	[6:0]	addr,
+		input wire	[15:0]	addr,
 		input wire			rd, wr,
 		input wire 	[31:0]	wdata,
 		output wire	[31:0]	rdata);
