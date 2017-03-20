@@ -19,9 +19,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module ALUControl(
-		input wire [5:0] funct,
-		input wire [1:0] aluop,
-		output reg [3:0] aluctl);
+	input wire [5:0] funct, // sinal de entrada de 6 bits
+	input wire [1:0] aluop, // sinal de entrada de 6 bits
+	output reg [3:0] aluctl); // sinal de saida de 4 bits
 
 	reg [3:0] _funct;
 
