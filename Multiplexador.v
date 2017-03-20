@@ -19,18 +19,18 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 module Multiplexador(r1,r2,controle,rst);
-    input r1; //MenToReg a ordem ir� mudar!!!
-	 input r2;
-	 input controle;
+    input r1; // sinal de entrada de 32 bits
+	 input r2; // sinal de entrada de 32 bits
+	 input controle; // sinal de controle de 2 bits
 	 wire [31:0]r1;
 	 wire [31:0]r2;
 	 wire controle;
-	 output rst;
+	 output rst; // sinal de saida de 32 bits
     reg [31:0]rst;
 	 
 	 always @ (r1,r2,controle)begin
 	     case(controle)
-		     1'b0: rst <= r1;
+		     1'b0: rst <= r1; // caso o sinal de controle seja 0, o sinal de saida receberá o primeiro sinal de entrada. Caso contrário, o sinal de saida receberá so segundo sinal de entrada
 	        default: rst<= r2;
 		  endcase
     end
