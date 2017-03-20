@@ -19,22 +19,22 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module DataMemory(
-		input wire			clk,
-		input wire	[15:0]	addr,
-		input wire			rd, wr,
-		input wire 	[31:0]	wdata,
-		output wire	[31:0]	rdata);
+		input wire			clk, // sinal de clock
+	input wire	[15:0]	addr, // sinal de entrada de 16 bits
+		input wire			rd, wr, 
+	input wire 	[31:0]	wdata,  // sinal de entrada de 32 bits
+	output wire	[31:0]	rdata);  // sinal de saida de 32 bits
 
-	reg [31:0] mem [0:127];  // 32-bit memory with 128 entries
+	reg [31:0] mem [0:127];  // 32 bits de memoria com 128 entradas
 
 	always @(posedge clk) begin
 		if (wr) begin
-			mem[addr] <= wdata;
+			mem[addr] <= wdata; // Armazena os sinais de entrada de 32 bits no 'vetor' de memoria
 		end
 	end
 
 	assign rdata = wr ? wdata : mem[addr][31:0];
-	// During a write, avoid the one cycle delay by reading from 'wdata'
+	// Durante uma escrita, evite o atraso de um ciclo lendo de 'wdata'
 
 endmodule
 
