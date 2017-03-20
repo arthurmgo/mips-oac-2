@@ -21,7 +21,7 @@
 module Multiplexador(r1,r2,controle,rst);
     input r1; // sinal de entrada de 32 bits
 	 input r2; // sinal de entrada de 32 bits
-	 input controle; // sinal de controle de 2 bits
+	 input controle; // sinal de controle de 1 bit
 	 wire [31:0]r1;
 	 wire [31:0]r2;
 	 wire controle;
