@@ -17,14 +17,17 @@ module Register(readReg1,readReg2,writeRegister,writeData,readData1,readData2,re
 				
 	integer i,j; 
 	initial begin  //Todos os Registradores iniciam com valor 0 
-		for(i=0;i<32;i=i+1) 
-			begin 
-				for(j=0;j<32;j=j+1) 
-					begin 
-					RegMemory[i][j]=1'b0; 
-					end 
-				  end  
+		for(i=0;i<32;i=i+1) begin 
+			for(j=0;j<32;j=j+1) begin 
+				RegMemory[i][j]=1'b0; 
 			end 
+		 end 
+		RegMemory[17]=32'b00000000000000000000000000000100;  //valor iniciado para o registrador $s1
+		RegMemory[18]=32'b00000000000000000000000000000001;  //valor iniciado para o registrador $s2
+		RegMemory[23]=32'b00000000000000000000000000010001; //endereço de $s1
+	end 
+	
+	
 				
 	assign  readData1 = RegMemory[readReg1]; // Retorno de um Registrador
 	assign  readData2 = RegMemory[readReg2]; // Retorno de um Registrador    
