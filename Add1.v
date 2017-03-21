@@ -18,15 +18,13 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Add1(r1,r2,rst,overflow); //Realiza a soma de dois registros de 8bits e retorna a soma e um bit de overflow
-	input [7:0]r1; //Primeira entrada
-	input [7:0]r2; //Segunda Entrada
-	output [7:0]rst; //Saida
-	reg [7:0]rst; 
-	output overflow;  //Bit de Overflow
-	reg overflow; 
-	 
-	always @ (r1,r2)begin 
-		{overflow,rst} = r1+r2; 
-    	end 
-endmodule 
+module Add1(r1,r2,rst);
+    input [7:0]r1;
+	 input [7:0]r2;
+	 output [7:0]rst;
+	 reg [7:0]rst;
+	
+	 always @ (r1 or r2)begin
+	       rst = r1+r2;
+    end
+endmodule

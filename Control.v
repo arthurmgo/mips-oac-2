@@ -18,15 +18,15 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Control(			//Decodificador de controle, retorna sinais que vai definir se os outros modulos estão funcionando ou nao
-	input  wire [5:0]	opcode, 
-	output reg branch_eq, branch_ne, 
-	output reg [1:0] aluop,
-	output reg memread, memwrite, memtoreg, 
-	output reg regdst, regwrite, alusrc, 
-	output reg jump); 
+module Control(
+		input  wire	[5:0]	opcode,
+		output reg			branch_eq, branch_ne,
+		output reg [1:0]	aluop,
+		output reg			memread, memwrite, memtoreg,
+		output reg			regdst, regwrite, alusrc,
+		output reg			jump);
 
-	always @(*) begin
+	always @(opcode) begin
 		// defaults para tipo add,sub,and, or,slt 
 		aluop[1:0]	<= 2'b10;
 		alusrc		<= 1'b0;

@@ -18,14 +18,15 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Extensor(r1,rst); //Este modulo recebe um sinal de entrada de 16 bits e o amplia para 32 bits.
-	input r1;
-	wire [15:0]r1; //Sinal de entrada de 16bits
-	output rst;
-	reg [31:0]rst;//Saida de 32bits
+module Extensor(r1,rst);
+      input r1;
+		wire [15:0]r1;
+
+      output rst;
+		reg [31:0]rst;
 		
-	always @ (r1)begin
-		rst[31:16] <= {16{r1[15]}};//No sinal de saida os bits de 31 a 16 serão copia do bit mais significativo do sinal de entrada
-		rst[15:0] <= r1[15:0];//Os bits de 15 a 0 do sinal de saida são o proprio sinal de entrada
+		always @ (r1)begin
+		   rst[31:16] <= 16'b0000000000000000;
+			rst[15:0] <= r1[15:0];
 		end
 endmodule

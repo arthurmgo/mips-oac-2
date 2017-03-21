@@ -18,33 +18,31 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module ALUControl(
-	input wire [5:0] funct, // sinal de entrada de 6 bits
-	input wire [1:0] aluop, // sinal de entrada de 6 bits
-	output reg [3:0] aluctl); // sinal de saida de 4 bits
+module ALUControl(funct,aluop,aluct);
 
-	reg [3:0] _funct;
+   input wire [5:0] funct;
+   input wire [1:0] aluop;
+	output reg [3:0] aluct;
+
 
 	always @(*) begin
-		case(funct[3:0])
-			4'd0:  _funct = 4'd2;	/* add */
-			4'd2:  _funct = 4'd6;	/* sub */
-			4'd5:  _funct = 4'd1;	/* or */
-			4'd6:  _funct = 4'd13;	/* xor */
-			4'd7:  _funct = 4'd12;	/* nor */
-			4'd10: _funct = 4'd7;	/* slt */
-			default: _funct = 4'd0;
+	
+	   if(aluop==2'b00)
+	      aluct = 4'b0010;
+		else if(aluop==2'b01)
+		   aluct = 4'b0110;
+		else
+		case(funct[5:0])
+			6'b100000:  aluct = 4'b0010;	/* add */
+			6'b100010:  aluct = 4'b0110;	/* sub */
+			6'b100100:  aluct = 4'b0000;	/* and */
+			6'b100101:  aluct= 4'b0001;	/* or*/
+			6'b101010:  aluct = 4'b0111;	/* slt */
+			
+			default: aluct = 4'b1111;
 		endcase
 	end
 
-	always @(*) begin
-		case(aluop)
-			2'd0: aluctl = 4'd2;	/* add */
-			2'd1: aluctl = 4'd6;	/* sub */
-			2'd2: aluctl = _funct;
-			2'd3: aluctl = 4'd2;	/* add */
-			default: aluctl = 0;
-		endcase
-	end
+	
 
 endmodule

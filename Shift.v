@@ -19,11 +19,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module Shift(in,out);
-	input [31:0]in; // sinal de entrada de 32 bits
-	output [31:0]out; // sinal de saida de 32 bits
+   input [31:0]in;
+	output [31:0]out;
 	reg [31:0]out;
    
 	always @ (in)begin
-	   out = in<<2; // o sinal de saida recebe o sinal de entrada com o deslocamento de 2 bits
+	   out = in<<2;
    end
 endmodule
