@@ -59,10 +59,10 @@ module InstructionMemory
 	       
 	       instruction_memory[11]=32'b10101110110100010000000000000000;   //sw $s1,0($s6)  Salva o valor 4 na posicao 5 
 			                                                                //da memoria de dados
-		    instruction_memory[12]=32'b00000010001100100101100000101010;   //slt $t3,$s1,$t1  s1 é menor que t1? (4<15) (11) = 1
+		    instruction_memory[12]=32'b00000010001010010101100000101010;   //slt $t3,$s1,$t1  s1 é menor que t1? (4<15) (11) = 1
 		    instruction_memory[13]=32'b00101010010011010000000000001000;   //slti $t5,$s2,8   s2 é menor que 8? (1<8) (13) = 1
 		   
-		    
+		     
 	 end
 	
 always@(pc)begin

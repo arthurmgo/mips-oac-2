@@ -20,7 +20,7 @@ module ALU(r1,r2,branch_eq,branch_neq,rst,zero,controle);
     output reg zero;
 	 
 	 reg [31:0]rst;
-	 
+	 reg [30:0]aux;
 	 always@(r1 or r2 or branch_eq or branch_neq)begin
 	     if(branch_eq==1'b1)
 	        zero = (r1==r2);

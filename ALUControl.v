@@ -31,14 +31,15 @@ module ALUControl(funct,aluop,aluct);
 	      aluct = 4'b0010;
 		else if(aluop==2'b01)
 		   aluct = 4'b0110;
-		else
+		else if(aluop==2'b11)
+		   aluct = 4'b0111;
+	   else
 		case(funct[5:0])
 			6'b100000:  aluct = 4'b0010;	/* add */
 			6'b100010:  aluct = 4'b0110;	/* sub */
 			6'b100100:  aluct = 4'b0000;	/* and */
 			6'b100101:  aluct= 4'b0001;	/* or*/
 			6'b101010:  aluct = 4'b0111;	/* slt */
-			
 			default: aluct = 4'b1111;
 		endcase
 	end

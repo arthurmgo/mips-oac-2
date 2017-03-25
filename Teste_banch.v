@@ -11,7 +11,7 @@ module Teste_banch;
 	//reg zero;
 	//reg [7:0]saida_mul8;
 	// Outputs
-	
+	 
 	//pc
 	   
 	reg clk;

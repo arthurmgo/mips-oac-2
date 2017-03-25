@@ -51,6 +51,14 @@ module Control(
 				regdst   <= 1'b0;
 				aluop[1] <= 1'b0;
 				alusrc   <= 1'b1;
+			end 
+			
+			6'b001010: begin   //slti
+			   regdst <=1'b0;
+			   alusrc <=1'b1;
+				aluop[1]<= 1'b1;
+				aluop[0]<=1'b1;
+			
 			end
 			6'b000100: begin	/* beq */
 				aluop[0]  <= 1'b1;
