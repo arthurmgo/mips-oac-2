@@ -83,8 +83,8 @@ module Teste_banch;
 	Multiplexador m2(.r1(readdata2),.r2(sinal_extendido),.controle(alusrc),.rst(entrada2_ALU));
 	
 	ALUControl alcon(.funct(i_buscada[5:0]),.aluop(aluop),.aluct(saida_alucontrol));
-	                                                      
-	ALU al(.r1(readdata1),.r2(entrada2_ALU),.controle(saida_alucontrol),.rst(saida_alu),.zero(zero));
+	///////                                                      
+	ALU al(.r1(readdata1),.r2(entrada2_ALU),.branch_eq(branch_eq),.branch_neq(branch_ne),.controle(saida_alucontrol),.rst(saida_alu),.zero(zero));
 	
 	DataMemory dm(.clk(clk),.addr(saida_alu[15:0]),.rd(memread),.wr(memwrite),.wdata(readdata2),.rdata(saida_datamemory));
 	
@@ -125,10 +125,12 @@ module Teste_banch;
 		 
 		always @(branch_eq or branch_ne or zero)
 		begin
-		   if(i_buscada[26]==1'b0)
+		   if(i_buscada[26]==1'b0)begin
              controle_mul8 = branch_eq & zero;
-         else 
+				 
+         end else begin
             controle_mul8 = branch_ne & zero;
+				end
       end
 		
       

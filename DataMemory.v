@@ -27,6 +27,16 @@ module DataMemory(
 
 	reg [31:0] mem [0:127];  // 32-bit memory with 128 entries
 
+   initial begin
+	    /*integer i;
+	    for(i=0;i<128;i=1+1)begin
+	        mem[i] = 32'b0;
+	    end
+		 */
+		 
+		 mem[17]=32'b00000000000000000000000000001111; //Inicia esse endereço com um dado qualquer
+	end
+
 	always @(posedge clk) begin
 		if (wr) begin
 			mem[addr] <= wdata;
